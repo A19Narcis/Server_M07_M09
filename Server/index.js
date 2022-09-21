@@ -61,13 +61,13 @@ app.get('/auth/:userid/:passwdid', (req, res) => {
     people.forEach(person => {
         if (person.name == user && person.pass == pass){
             userExists = true;
-            var dades = JSON.stringify("Auth: " + person.isAuth + "<br>Rols: " + person.rols);
+            var dades = JSON.stringify("Auth: " + person.isAuth + "<br>Rols: [" + person.rols + "]");
             res.send(dades);
         }
     });
 
     if (!userExists) {
-        res.send("No ets apte");
+        res.send("Auth: False<br>Rols: [N U L L]");
     }
 });
 
