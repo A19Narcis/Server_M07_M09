@@ -23,7 +23,10 @@ app.get('/auth/:userid/:passwdid', (req, res) => {
     let user = req.params.userid;
     let pass = req.params.passwdid;
 
-    var isAuth = false;
+    var ret = {
+        isAuth: false,
+        rols: []
+    }
 
     console.log("New request...");
 
@@ -61,14 +64,13 @@ app.get('/auth/:userid/:passwdid', (req, res) => {
     people.forEach(person => {
         if (person.name == user && person.pass == pass){
             userExists = true;
-            var dades = JSON.stringify("Auth: " + person.isAuth + "<br>Rols: [" + person.rols + "]");
-            res.send(dades);
+            ret.isAuth = person.isAuth;
+            ret.rols = person.rols;
         }
     });
 
-    if (!userExists) {
-        res.send("Auth: False<br>Rols: [N U L L]");
-    }
+    res.send(JSON.stringify(ret));
+
 });
 
 
