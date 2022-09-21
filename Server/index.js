@@ -60,10 +60,8 @@ app.get('/auth/:userid/:passwdid', (req, res) => {
             }
     ]
 
-    let userExists = false;
     people.forEach(person => {
         if (person.name == user && person.pass == pass){
-            userExists = true;
             ret.isAuth = person.isAuth;
             ret.rols = person.rols;
         }
