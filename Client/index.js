@@ -3,11 +3,11 @@ var app = new Vue({
     vuetify: new Vuetify(),
     data: () => ({
         snackbar: false,
-        text: "buenas",
-        timeout: 1500,
+        text: "No se poner la data :)",
+        timeout: 1500
     }),
     methods: {
-        getData: function () {
+        getData: function (req, res) {
             console.log("Get data");
             const myHeaders = new Headers();
 
@@ -29,13 +29,12 @@ var app = new Vue({
             ).then(
                 (data) => {
                     console.log(data);
-                    var dataF = data.json();
                 } 
             ).catch(
                 (error) => {
                     //console.log("Error: " + error)
                 }
             );
-        },
+        }
     }
 })

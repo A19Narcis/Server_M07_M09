@@ -17,38 +17,35 @@
 <body>
     <div id="app">
         <v-container id="container_login">
-            <v-row>
-              <v-col md="2" >
-                <v-text-field id="user"
-                  v-model="user"
-                  :counter="30"
-                  label="User"
-                  required
-                ></v-text-field>
-                <v-text-field id="passwd"
-                  type="password"
-                  v-model="passwd"
-                  :counter="30"
-                  label="Password"
-                  required
-                ></v-text-field>
-                <v-btn dark color="orange darken-2" @click="getData">
-                    Sign Up
-                </v-btn>
-              </v-col>
-            </v-row>
-        </v-container>
-
-        <v-snackbar v-model="snackbar" :timeout="timeout">
-            {{ text }}
-            <template v-slot:action="{ attrs }">
-            <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-                <v-icon>
-                    mdi-close
-                </v-icon>
+            <v-col md="2" >
+            <v-text-field id="user"
+                v-model="user"
+                :counter="30"
+                label="User"
+                required
+            ></v-text-field>
+            <v-text-field id="passwd"
+                type="password"
+                v-model="passwd"
+                :counter="30"
+                label="Password"
+                required
+            ></v-text-field>
+            <v-btn dark color="orange darken-2" @click="snackbar = true">
+                Sign Up
             </v-btn>
-        </template>
-      </v-snackbar>
+            </v-col>
+            <v-snackbar v-model="snackbar" :timeout="timeout">
+                {{ text }}
+                <template v-slot:action="{ attrs }">
+                <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+                    <v-icon>
+                        mdi-close
+                    </v-icon>
+                </v-btn>
+                </template>
+            </v-snackbar>
+        </v-container>
     </div>
     <script src="index.js"></script>
 </body>
