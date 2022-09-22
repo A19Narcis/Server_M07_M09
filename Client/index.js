@@ -1,15 +1,16 @@
 var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
-    data: {
-
-    },
+    data: {},
     methods: {
         getData: function () {
             console.log("Get data");
             const myHeaders = new Headers();
 
-            fetch("http://localhost:3000/getConfig/",
+            let nomUser = document.getElementById("user").value;
+            let passwd = document.getElementById("pass").value;
+
+            fetch("http://localhost:3000/auth/" + nomUser + "/" + passwd,
                 {
                 method: "GET",
                 headers: myHeaders,
@@ -27,8 +28,7 @@ var app = new Vue({
                 } 
             ).catch(
                 (error) => {
-                    console.log("Error: ");
-                    console.log(error);
+                    //console.log("Error: " + error)
                 }
             );
         }

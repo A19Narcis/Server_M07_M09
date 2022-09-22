@@ -16,13 +16,19 @@
 </head>
 <body>
     <div id="app">
-        <v-btn @click="getData" elevation="9" rounded color="secundary" outlined>
-            <v-icon>
-                mdi-android
-              </v-icon>
+
+        <br><input name="user" id="user" type="text"><br>
+        <input name="pass" id="pass" type="password"><br>
+
+        <v-btn @click="getData" elevation="9" outlined rounded>
+            Sing Up
         </v-btn>
+        
+        <div  v-if="isAuth==true" id="toast">
+            <h1>Buenas</h1>
+        </div>
+
     </div>
-    
     <script src="index.js"></script>
 </body>
 </html>
