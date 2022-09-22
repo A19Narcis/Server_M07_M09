@@ -4,14 +4,6 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-/*
-let cors_config = {
-    origin: function (origin, callback){
-        return callback(null, true);
-    }
-};
-*/
-
 app.use (cors({
     origin: function (origin, callback){
         return callback(null, true);

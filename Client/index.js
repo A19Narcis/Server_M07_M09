@@ -1,16 +1,20 @@
 var app = new Vue({
     el: "#app",
     vuetify: new Vuetify(),
-    data: {},
+    data: () => ({
+        snackbar: false,
+        text: "buenas",
+        timeout: 1500,
+    }),
     methods: {
         getData: function () {
             console.log("Get data");
             const myHeaders = new Headers();
 
-            let nomUser = document.getElementById("user").value;
-            let passwd = document.getElementById("pass").value;
+            var userID = document.getElementById("user").value;
+            var passID = document.getElementById("passwd").value;
 
-            fetch("http://localhost:3000/auth/" + nomUser + "/" + passwd,
+            fetch("http://localhost:3000/auth/" + userID + "/" + passID,
                 {
                 method: "GET",
                 headers: myHeaders,
@@ -25,12 +29,13 @@ var app = new Vue({
             ).then(
                 (data) => {
                     console.log(data);
+                    var dataF = data.json();
                 } 
             ).catch(
                 (error) => {
                     //console.log("Error: " + error)
                 }
             );
-        }
+        },
     }
 })
