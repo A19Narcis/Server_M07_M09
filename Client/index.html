@@ -15,38 +15,40 @@
     <script src="https://unpkg.com/vuetify@2.6.10/dist/vuetify.min.js"></script>
 </head>
 <body>
-    <div id="app">
-        <v-container id="container_login">
-            <v-col md="2" >
-            <v-text-field id="user"
-                v-model="user"
-                :counter="30"
-                label="User"
-                required
-            ></v-text-field>
-            <v-text-field id="passwd"
-                type="password"
-                v-model="passwd"
-                :counter="30"
-                label="Password"
-                required
-            ></v-text-field>
-            <v-btn dark color="orange darken-2" @click="snackbar = true">
-                Sign Up
-            </v-btn>
-            </v-col>
-            <v-snackbar v-model="snackbar" :timeout="timeout">
-                {{ text }}
-                <template v-slot:action="{ attrs }">
-                <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
-                    <v-icon>
-                        mdi-close
-                    </v-icon>
-                </v-btn>
-                </template>
-            </v-snackbar>
+    <v-app id="app">
+        <v-container fill-height>
+            <v-row justify ="center" align-items = "center">
+                <v-col cols="10" sm = "3">
+                    <v-text-field id="user"
+                        v-model="user"
+                        :counter="30"
+                        label="User"
+                        required
+                    ></v-text-field>
+                    <v-text-field id="passwd"
+                        type="password"
+                        v-model="passwd"
+                        :counter="30"
+                        label="Password"
+                        required
+                    ></v-text-field>
+                    <v-btn dark color="light-blue" @click = "getData" @click="snackbar = true">
+                        Sign Up
+                    </v-btn>
+                    </v-col>
+                    <v-snackbar v-model="snackbar" :timeout="timeout">
+                        {{ text }}
+                        <template v-slot:action="{ attrs }">
+                        <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+                            <v-icon>
+                                mdi-close
+                            </v-icon>
+                        </v-btn>
+                        </template>
+                    </v-snackbar>
+            </v-row>
         </v-container>
-    </div>
+    </v-app>
     <script src="index.js"></script>
 </body>
 </html>

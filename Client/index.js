@@ -1,20 +1,19 @@
 var app = new Vue({
     el: "#app",
-    vuetify: new Vuetify(),
-    data: () => ({
+    data: {
+        user: "",
+        passwd: "",
         snackbar: false,
-        text: "No se poner la data :)",
-        timeout: 1500
-    }),
+        text: "",
+        timeout: 2000,
+    },
+    vuetify: new Vuetify(),
     methods: {
-        getData: function (req, res) {
+        getData: function () {
             console.log("Get data");
             const myHeaders = new Headers();
-
-            var userID = document.getElementById("user").value;
-            var passID = document.getElementById("passwd").value;
-
-            fetch("http://localhost:3000/auth/" + userID + "/" + passID,
+            
+            fetch("http://localhost:3000/auth/" + this.user + "/" + this.passwd,
                 {
                 method: "GET",
                 headers: myHeaders,
@@ -29,6 +28,12 @@ var app = new Vue({
             ).then(
                 (data) => {
                     console.log(data);
+                    this.snackbar = true;
+                    if (!data.isAuth){
+                        this.text = "No pots accedir"
+                    } else {
+                        this.text = "Usuari vàlid --> Rols: " + data.rols; //Texto snackbar
+                    }
                 } 
             ).catch(
                 (error) => {
@@ -36,5 +41,6 @@ var app = new Vue({
                 }
             );
         }
-    }
+    },
+    
 })
